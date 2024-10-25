@@ -9,7 +9,7 @@ KEYPAIR_TOKEN_MINT=./.keypairs/${NETWORK}/${TOKEN_MINT}.json
 KEYPAIR_ZERO_TOKEN_MINT=./.keypairs/${NETWORK}/${ZERO_TOKEN_MINT}.json
 
 env:
-	solana config set --url ${NETWORK}
+	solana config set --url https://rpc.ironforge.network/mainnet?apiKey=01J85Y40QQF3JZX1ZSYYQVBTBA
 	solana config set --keypair ${KEYPAIR_TOKEN_AUTHORITY}
 	cp ${KEYPAIR_TOKEN_AUTHORITY} ~/.config/solana/id.json
 
