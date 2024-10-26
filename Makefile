@@ -22,11 +22,26 @@ metadata-create-zero:
 	metaboss create metadata --metadata ./zero-token.json --mint ${ZERO_TOKEN_MINT}
 
 metadata-update-zero:
-	metaboss update uri --account ${ZERO_TOKEN_MINT} --new-uri=https://raw.githubusercontent.com/Mybasebet/BBT/main/zero-metadata.json
+	metaboss update uri --account ${ZERO_TOKEN_MINT} --new-uri=https://raw.githubusercontent.com/Mybasebet/BBT/main/metadata.json
 
 disable-auth-zero:
 	spl-token authorize ${ZERO_TOKEN_MINT} mint --disable
 	spl-token authorize ${ZERO_TOKEN_MINT} freeze --disable
+
+create:
+	spl-token create-token --decimals 9 ${KEYPAIR_TOKEN_MINT} || true
+	spl-token create-account ${TOKEN_MINT} || true
+	spl-token mint ${TOKEN_MINT} 1000000000
+
+metadata-create:
+	metaboss create metadata --metadata ./token.json --mint ${TOKEN_MINT}
+
+metadata-update:
+	metaboss update uri --account ${TOKEN_MINT} --new-uri=https://raw.githubusercontent.com/Mybasebet/BBT/main/metadata.json
+
+disable-auth:
+#	spl-token authorize ${TOKEN_MINT} mint --disable
+#	spl-token authorize ${TOKEN_MINT} freeze --disable
 
 airdrop:
 	solana --url ${NETWORK} \
